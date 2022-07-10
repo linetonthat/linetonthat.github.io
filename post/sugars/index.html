@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Sugars, sugars... Everywhere? | Line Ton That</title>
+<meta name="keywords" content="sugar, food, dataviz, Tableau, pie chart">
+<meta name="description" content="Visualising the sugar consumption of my family After hearing that sugars are widely available in processed foods, I decided to take a closer look at some of the products we typically consume in my family. My goal was to find out how much sugar we consume on a daily basis.
+I collected the data from Open Food Facts. My children helped me measure some of the servings. I then built graphs using Tableau public to analyze the data, and created a dashboard to summarize my results.">
+<meta name="author" content="">
+<link rel="canonical" href="https://linetonthat.github.io/post/sugars/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.d7fb4cbf980fe688a21621b06a795933c4e6bb2d4070ec940667af1715d84af2.css" integrity="sha256-1/tMv5gP5oiiFiGwanlZM8Tmuy1AcOyUBmevFxXYSvI=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://linetonthat.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://linetonthat.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://linetonthat.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://linetonthat.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://linetonthat.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="Sugars, sugars... Everywhere?" />
+<meta property="og:description" content="Visualising the sugar consumption of my family After hearing that sugars are widely available in processed foods, I decided to take a closer look at some of the products we typically consume in my family. My goal was to find out how much sugar we consume on a daily basis.
+I collected the data from Open Food Facts. My children helped me measure some of the servings. I then built graphs using Tableau public to analyze the data, and created a dashboard to summarize my results." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://linetonthat.github.io/post/sugars/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-07-03T21:23:54&#43;02:00" />
+<meta property="article:modified_time" content="2022-07-03T21:23:54&#43;02:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Sugars, sugars... Everywhere?"/>
+<meta name="twitter:description" content="Visualising the sugar consumption of my family After hearing that sugars are widely available in processed foods, I decided to take a closer look at some of the products we typically consume in my family. My goal was to find out how much sugar we consume on a daily basis.
+I collected the data from Open Food Facts. My children helped me measure some of the servings. I then built graphs using Tableau public to analyze the data, and created a dashboard to summarize my results."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://linetonthat.github.io/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Sugars, sugars... Everywhere?",
+      "item": "https://linetonthat.github.io/post/sugars/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Sugars, sugars... Everywhere?",
+  "name": "Sugars, sugars... Everywhere?",
+  "description": "Visualising the sugar consumption of my family After hearing that sugars are widely available in processed foods, I decided to take a closer look at some of the products we typically consume in my family. My goal was to find out how much sugar we consume on a daily basis.\nI collected the data from Open Food Facts. My children helped me measure some of the servings. I then built graphs using Tableau public to analyze the data, and created a dashboard to summarize my results.",
+  "keywords": [
+    "sugar", "food", "dataviz", "Tableau", "pie chart"
+  ],
+  "articleBody": "Visualising the sugar consumption of my family After hearing that sugars are widely available in processed foods, I decided to take a closer look at some of the products we typically consume in my family. My goal was to find out how much sugar we consume on a daily basis.\nI collected the data from Open Food Facts. My children helped me measure some of the servings. I then built graphs using Tableau public to analyze the data, and created a dashboard to summarize my results. Main design choices OMG - Pie charts!! To give an idea of the sugar content of each product, I decided to use a pie chart. The objective was to show whether sugar is present or not, and if it is present, to give a rough idea of the amount (less than 25%, less than 50%, less than 75%, more than 75%). The area is used to represent the size of the portion. I do not recommend using these pie charts to compare the sugar content of one product to another. A bar graph would be more effective.\nThis project met the requirements of the “Find the Exception (thoughtfully)” challenge hosted by the Storytelling with Data team. I used this project as a challenge submission.\nI even tried putting the pie icon on a plate, but decided to save that idea for another version (for kids).\nGuide the reader as much as possible In order to facilitate the flow of information for the reader, I removed unnecessary interactions:\nIn the original design, the reader could select which values to display per 100g or per serving. Only the portion size is really significant if we want to understand the total sugar consumption. Then, I displayed only the serving size. My original idea was to let the reader make up his own diet, but that would have been irrelevant and distracting, since the idea was to present diets with typical ranges of sugar consumption. And to emphasize the fact that sugars add up quickly, leading to an unhealthy daily sugar intake. The labeling of the different diets, such as the “carefree diet”, also helps the reader to classify the different diets presented. There is no single recommended daily intake of sugar (see section below). Therefore, I have chosen to show different values than those from authoritative sources. I have used red for the World Health Organization’s upper limit. I have not used green anywhere, as the consumption of added sugars should be as low as possible. Data used I had initially left out desserts, but their impact on sugar consumption was too great to leave out. I did not include candy, although my children do eat it from time to time. For time reasons, I chose individual products to represent an entire category of food products. It was also closer to the actual products consumed by my family. Potential follow-up to the project This project made me aware of how much sugar we actually consume, especially my children. It pushed me to take steps to reduce our sugar intake. Weighting portion sizes, calculating sugar consumption, and discussing the results with them has really made them aware of this issue.\nI like how Open Food Facts has developed a nice game to raise awareness about sugar levels in processed foods. I could play it with my children.\nFuture versions of this data viz could include:\na version for children, with less text and more pictograms, or a carousel with selected information. This project also made me want to explore other aspects of our food. To be continued…\nAdditional information What are the different kinds of carbohydrates and sugars? Sugars are simple carbohydrates and generally have a sweet flavor. In the European Union, carbohydrates and sugars mentioned in the Nutrition Facts are defined as:\nCarbohydrate: any carbohydrate which is metabolised by humans, and includes polyols. Sugars: all monosaccharides and disaccharides present in food, but excludes polyols. Fibre: carbohydrate polymers with three or more monomeric units, which are neither digested nor absorbed in the human small intestine and belong to the following categories: edible carbohydrate polymers naturally occurring in the food as consumed, edible carbohydrate polymers which have been obtained from food raw material by physical, enzymatic or chemical means and which have a beneficial physiological effect demonstrated by generally accepted scientific evidence, edible synthetic carbohydrate polymers which have a beneficial physiological effect demonstrated by generally accepted scientific evidence. Hugo Blanc, a nutritionist, provides examples of carbohydrates in this article:\nCarbohydrate Number of sugar molecules Examples Monosaccharide 1 Fructose, galactose, ribose, glucose Disaccharide 2 Lactose (milk sugar), sucrose (cane sugar, beet sugar), trehalose and maltose (malt sugar) Oligosaccharide 3 to 8 Maltodextrine Oligosaccharide \u003e 9 starches (amylopectin, amylose) and fibres (cellulose and pentosans) Total sugars can be divided into 2 sub-categories:\nSugars naturally present in intact fruits, vegetables, and milk Free sugars (term used by the WHO) or added sugars (terms used by the American Heart Association). The second category include refined sugars, as well as sugars naturally present in honey, syrups, fruit \u0026 vegetable juices and juice concentrates. While the nutrition facts label in France includes Carbohydrates and Total sugars, the new nutrition facts label in the US now also has an additional line for Added sugars, as illustrated below. The US version makes it easier to know the exact quantity of added sugars. Source: U.S. Food and Drug Administration\nWhat’s the recommended daily sugar intake? Most recommended daily sugar intakes provided by authoritative sources are based on the daily energy requirements. These requirements depend mainly on the age, weight, and level of physical activity.\nHere are the maximal daily sugar intakes recommended for adults by authoritative sources:\nSource Maximal daily sugar intake (g) World Health Organization 50 (upper), 25 (ideal) American Heart Association 36 (men), 25 (women) ANSES 100 European Food Safety Authority As low as possible Additional resources WHO - Guideline: sugars intake for adults and children FAO - Energy requirements of children and adolescents Different personalities of sugar consumers ",
+  "wordCount" : "1003",
+  "inLanguage": "en",
+  "datePublished": "2022-07-03T21:23:54+02:00",
+  "dateModified": "2022-07-03T21:23:54+02:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://linetonthat.github.io/post/sugars/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Line Ton That",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://linetonthat.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://linetonthat.github.io" accesskey="h" title="Line Ton That (Alt + H)">Line Ton That</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://linetonthat.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://linetonthat.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      Sugars, sugars... Everywhere?
+    </h1>
+    <div class="post-meta"><span title='2022-07-03 21:23:54 +0200 CEST'>July 3, 2022</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h2 id="visualising-the-sugar-consumption-of-my-family">Visualising the sugar consumption of my family<a hidden class="anchor" aria-hidden="true" href="#visualising-the-sugar-consumption-of-my-family">#</a></h2>
+<p>After hearing that sugars are widely available in processed foods, I decided to take a closer look at some of the products we typically consume in my family. My goal was to find out how much sugar we consume on a daily basis.</p>
+<p>I collected the data from <strong><a href="https://world.openfoodfacts.org/">Open Food Facts</a></strong>. My children helped me measure some of the servings. I then built graphs using Tableau public to analyze the data, and created a dashboard to summarize <strong><a href="https://public.tableau.com/views/Sugarssugars___Everywhere/recap?:language=fr-FR&amp;publish=yes&amp;:display_count=n&amp;:origin=viz_share_link">my results</a></strong>.
+<img loading="lazy" src="/images/22-07_dataviz.png" alt="Text"  title="Dataviz: Sugars sugars everywhere"  />
+</p>
+<h2 id="main-design-choices">Main design choices<a hidden class="anchor" aria-hidden="true" href="#main-design-choices">#</a></h2>
+<h3 id="omg---pie-charts">OMG - Pie charts!!<a hidden class="anchor" aria-hidden="true" href="#omg---pie-charts">#</a></h3>
+<p>To give an idea of the sugar content of each product, I decided to use a pie chart. The objective was to show <strong>whether sugar is present or not</strong>, and if it is present, to give a <strong>rough idea of the amount</strong> (less than 25%, less than 50%, less than 75%, more than 75%). The area is used to represent the size of the portion. I do not recommend using these pie charts to compare the sugar content of one product to another. A bar graph would be more effective.</p>
+<p>This project met the requirements of the &ldquo;Find the Exception (thoughtfully)&rdquo; challenge hosted by the <strong><a href="https://community.storytellingwithdata.com/challenges/jun-2022-find-the-exception/sugars-sugars-everywhere-pie-charts-x-small-multip">Storytelling with Data</a></strong> team. I used this project as a challenge submission.</p>
+<p>I even tried putting the pie icon on a plate, but decided to save that idea for another version (for kids).</p>
+<h3 id="guide-the-reader-as-much-as-possible">Guide the reader as much as possible<a hidden class="anchor" aria-hidden="true" href="#guide-the-reader-as-much-as-possible">#</a></h3>
+<p>In order to facilitate the flow of information for the reader, I removed unnecessary interactions:</p>
+<ul>
+<li>In the original design, the reader could select which values to display per 100g or per serving. Only the portion size is really significant if we want to understand the total sugar consumption. Then, I displayed <strong>only the serving size</strong>.
+<img loading="lazy" src="/images/22-07_serving_sizes.png" alt="Text"  title="Serving size"  />
+</li>
+<li>My original idea was to let the reader make up his own diet, but that would have been irrelevant and distracting, since the idea was to present diets with typical ranges of sugar consumption. And to emphasize the fact that <strong>sugars add up quickly</strong>, leading to an unhealthy daily sugar intake.</li>
+<li>The <strong>labeling of the different diets</strong>, such as the &ldquo;carefree diet&rdquo;, also helps the reader to classify the different diets presented.</li>
+<li>There is <strong>no single recommended daily intake of sugar</strong> (see section below). Therefore, I have chosen to show different values than those from authoritative sources. I have used red for the World Health Organization&rsquo;s upper limit. I have not used green anywhere, as the consumption of added sugars should be as low as possible.
+<img loading="lazy" src="/images/22-07_thresholds.png" alt="Text"  title="Daily sugar intake"  />
+</li>
+</ul>
+<h3 id="data-used">Data used<a hidden class="anchor" aria-hidden="true" href="#data-used">#</a></h3>
+<ul>
+<li>I had initially left out <strong>desserts</strong>, but their impact on sugar consumption was too great to leave out. I did not include candy, although my children do eat it from time to time.</li>
+<li>For time reasons, I chose <strong>individual products</strong> to represent an entire category of food products. It was also closer to the actual products consumed by my family.</li>
+</ul>
+<h2 id="potential-follow-up-to-the-project">Potential follow-up to the project<a hidden class="anchor" aria-hidden="true" href="#potential-follow-up-to-the-project">#</a></h2>
+<p>This project made me aware of how much sugar we actually consume, especially my children. It pushed me to take steps to reduce our sugar intake. Weighting portion sizes, calculating sugar consumption, and discussing the results with them has really made them aware of this issue.</p>
+<p>I like how Open Food Facts has developed a nice <strong><a href="https://howmuchsugar.in/">game</a></strong> to raise awareness about sugar levels in processed foods. I could play it with my children.</p>
+<p>Future versions of this data viz could include:</p>
+<ul>
+<li>a version for children, with less text and more <strong><a href="https://openmoji.org/">pictograms</a></strong>,</li>
+<li>or a carousel with selected information.</li>
+</ul>
+<p>This project also made me want to explore other aspects of our food. To be continued&hellip;</p>
+<hr>
+<h2 id="additional-information">Additional information<a hidden class="anchor" aria-hidden="true" href="#additional-information">#</a></h2>
+<h3 id="what-are-the-different-kinds-of-carbohydrates-and-sugars">What are the different kinds of carbohydrates and sugars?<a hidden class="anchor" aria-hidden="true" href="#what-are-the-different-kinds-of-carbohydrates-and-sugars">#</a></h3>
+<p>Sugars are simple carbohydrates and generally have a sweet flavor. In the <strong><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02011R1169-20180101&amp;from=EN#tocId68">European Union</a></strong>, carbohydrates and sugars mentioned in the Nutrition Facts are defined as:</p>
+<ul>
+<li>Carbohydrate: any carbohydrate which is metabolised by humans, and includes polyols.</li>
+<li>Sugars: all monosaccharides and disaccharides present in food, but excludes polyols.</li>
+<li>Fibre: carbohydrate polymers with three or more monomeric units, which are neither digested nor absorbed in the human small intestine and belong to the following categories:
+<ul>
+<li>edible carbohydrate polymers naturally occurring in the food as consumed,</li>
+<li>edible carbohydrate polymers which have been obtained from food raw material by physical, enzymatic or chemical means and which have a beneficial physiological effect demonstrated by generally accepted scientific evidence,</li>
+<li>edible synthetic carbohydrate polymers which have a beneficial physiological effect demonstrated by generally accepted scientific evidence.</li>
+</ul>
+</li>
+</ul>
+<p>Hugo Blanc, a nutritionist, provides examples of carbohydrates in <strong><a href="https://sagessesante.fr/glucides/">this article</a></strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Carbohydrate</th>
+<th style="text-align:right">Number of sugar molecules</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Monosaccharide</td>
+<td style="text-align:right">1</td>
+<td>Fructose, galactose, ribose, glucose</td>
+</tr>
+<tr>
+<td>Disaccharide</td>
+<td style="text-align:right">2</td>
+<td>Lactose (milk sugar), sucrose (cane sugar, beet sugar), trehalose and maltose (malt sugar)</td>
+</tr>
+<tr>
+<td>Oligosaccharide</td>
+<td style="text-align:right">3 to 8</td>
+<td>Maltodextrine</td>
+</tr>
+<tr>
+<td>Oligosaccharide</td>
+<td style="text-align:right">&gt; 9</td>
+<td>starches (amylopectin, amylose) and fibres (cellulose and pentosans)</td>
+</tr>
+</tbody>
+</table>
+<p>Total sugars can be divided into 2 sub-categories:</p>
+<ol>
+<li>Sugars naturally present in intact fruits, vegetables, and milk</li>
+<li>Free sugars (term used by the <strong><a href="https://www.who.int/publications/i/item/9789241549028">WHO</a></strong>) or added sugars (terms used by the <strong><a href="https://www.heart.org/en/healthy-living/healthy-eating/eat-smart/sugar/added-sugars">American Heart Association</a></strong>).
+The second category include refined sugars, as well as sugars naturally present in honey, syrups, fruit &amp; vegetable juices and juice concentrates.
+<img loading="lazy" src="/images/22-07_sugar_sub-categories.png" alt="Text"  title="Sugar sub-categories"  />
+</li>
+</ol>
+<p>While the nutrition facts label in France includes Carbohydrates and Total sugars, the
+<strong><a href="https://www.fda.gov/food/nutrition-education-resources-materials/new-nutrition-facts-label">new nutrition facts label in the US</a></strong> now also has an additional line for Added sugars, as illustrated below. The US version makes it easier to know the exact quantity of added sugars.
+<img loading="lazy" src="/images/22-07_original_and_new_labels.png" alt="Text"  title="Original &amp; new labels"  />
+
+Source: <strong><a href="https://www.fda.gov/media/135302/download">U.S. Food and Drug Administration</a></strong></p>
+<h3 id="whats-the-recommended-daily-sugar-intake">What&rsquo;s the recommended daily sugar intake?<a hidden class="anchor" aria-hidden="true" href="#whats-the-recommended-daily-sugar-intake">#</a></h3>
+<p>Most recommended daily sugar intakes provided by authoritative sources are based on the daily energy requirements. These requirements depend mainly on the age, weight, and level of physical activity.</p>
+<p>Here are the maximal daily sugar intakes recommended for adults by authoritative sources:</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th style="text-align:right">Maximal daily sugar intake (g)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><a href="https://www.who.int/en/news-room/fact-sheets/detail/healthy-diet">World Health Organization</a></strong></td>
+<td style="text-align:right">50 (upper), 25 (ideal)</td>
+</tr>
+<tr>
+<td><strong><a href="https://www.heart.org/en/healthy-living/healthy-eating/eat-smart/sugar/how-much-sugar-is-too-much">American Heart Association</a></strong></td>
+<td style="text-align:right">36 (men), 25 (women)</td>
+</tr>
+<tr>
+<td><strong><a href="https://www.anses.fr/fr/content/sucres-dans-l%E2%80%99alimentation">ANSES</a></strong></td>
+<td style="text-align:right">100</td>
+</tr>
+<tr>
+<td><strong><a href="https://www.efsa.europa.eu/en/news/added-and-free-sugars-should-be-low-possible">European Food Safety Authority</a></strong></td>
+<td style="text-align:right">As low as possible</td>
+</tr>
+</tbody>
+</table>
+<h3 id="additional-resources">Additional resources<a hidden class="anchor" aria-hidden="true" href="#additional-resources">#</a></h3>
+<ul>
+<li><strong><a href="https://www.who.int/publications/i/item/9789241549028">WHO - Guideline: sugars intake for adults and children</a></strong></li>
+<li><strong><a href="https://www.fao.org/3/Y5686E/y5686e06.htm">FAO - Energy requirements of children and adolescents</a></strong></li>
+<li><strong><a href="https://foodindustryexecutive.com/2019/10/cautious-vs-carefree-the-split-personality-of-sugar-conscious-consumers/">Different personalities of sugar consumers</a></strong></li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://linetonthat.github.io/tags/sugar/">sugar</a></li>
+      <li><a href="https://linetonthat.github.io/tags/food/">food</a></li>
+      <li><a href="https://linetonthat.github.io/tags/dataviz/">dataviz</a></li>
+      <li><a href="https://linetonthat.github.io/tags/tableau/">Tableau</a></li>
+      <li><a href="https://linetonthat.github.io/tags/pie-chart/">pie chart</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://linetonthat.github.io">Line Ton That</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

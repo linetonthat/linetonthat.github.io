@@ -1,7 +1,7 @@
 ---
 title: "Sugars, sugars... Everywhere?"
 date: 2022-07-03T21:23:54+02:00
-draft: true
+draft: false
 tags: ["sugar", "food", "dataviz", "Tableau", "pie chart"]
 ---
 

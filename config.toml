@@ -1,5 +1,5 @@
 # baseURL = 'https://linetonthat.github.io'
-baseURL = 'http://linetonthat.com'
+baseURL = 'https://linetonthat.com'
 languageCode = 'en-us'
 title = 'Line Ton That'
 theme= "PaperMod"

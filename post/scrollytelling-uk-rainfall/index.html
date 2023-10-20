@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>My first scrollytelling project | Line Ton That</title>
+<meta name="keywords" content="D3, scrollama, dataviz, scrollytelling, javascript, bar chart, climate change, UK, rainfall">
+<meta name="description" content="Context Scrollytelling had been on my wishlist for some time. I love this method as it allows guiding the reader step by step through the narrative, using annotations and animations. I&rsquo;ve also submitted it to this month&rsquo;s Storytelling with Data Challenge &ldquo;annotate it!&rdquo; . To test out the technique, I chose to reimagine a data visualization that was mostly static. Here is its summary: The result See the complete scrollytelling version here.">
+<meta name="author" content="">
+<link rel="canonical" href="https://linetonthat.com/post/scrollytelling-uk-rainfall/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.d7fb4cbf980fe688a21621b06a795933c4e6bb2d4070ec940667af1715d84af2.css" integrity="sha256-1/tMv5gP5oiiFiGwanlZM8Tmuy1AcOyUBmevFxXYSvI=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://linetonthat.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://linetonthat.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://linetonthat.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://linetonthat.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://linetonthat.com/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="My first scrollytelling project" />
+<meta property="og:description" content="Context Scrollytelling had been on my wishlist for some time. I love this method as it allows guiding the reader step by step through the narrative, using annotations and animations. I&rsquo;ve also submitted it to this month&rsquo;s Storytelling with Data Challenge &ldquo;annotate it!&rdquo; . To test out the technique, I chose to reimagine a data visualization that was mostly static. Here is its summary: The result See the complete scrollytelling version here." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://linetonthat.com/post/scrollytelling-uk-rainfall/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-10-20T09:28:00&#43;02:00" />
+<meta property="article:modified_time" content="2023-10-20T09:28:00&#43;02:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="My first scrollytelling project"/>
+<meta name="twitter:description" content="Context Scrollytelling had been on my wishlist for some time. I love this method as it allows guiding the reader step by step through the narrative, using annotations and animations. I&rsquo;ve also submitted it to this month&rsquo;s Storytelling with Data Challenge &ldquo;annotate it!&rdquo; . To test out the technique, I chose to reimagine a data visualization that was mostly static. Here is its summary: The result See the complete scrollytelling version here."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://linetonthat.com/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "My first scrollytelling project",
+      "item": "https://linetonthat.com/post/scrollytelling-uk-rainfall/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "My first scrollytelling project",
+  "name": "My first scrollytelling project",
+  "description": "Context Scrollytelling had been on my wishlist for some time. I love this method as it allows guiding the reader step by step through the narrative, using annotations and animations. I\u0026rsquo;ve also submitted it to this month\u0026rsquo;s Storytelling with Data Challenge \u0026ldquo;annotate it!\u0026rdquo; . To test out the technique, I chose to reimagine a data visualization that was mostly static. Here is its summary: The result See the complete scrollytelling version here.",
+  "keywords": [
+    "D3", "scrollama", "dataviz", "scrollytelling", "javascript", "bar chart", "climate change", "UK", "rainfall"
+  ],
+  "articleBody": "Context Scrollytelling had been on my wishlist for some time. I love this method as it allows guiding the reader step by step through the narrative, using annotations and animations. I’ve also submitted it to this month’s Storytelling with Data Challenge “annotate it!” . To test out the technique, I chose to reimagine a data visualization that was mostly static. Here is its summary: The result See the complete scrollytelling version here. NB: This version is best viewed on a desktop computer (or at least on a screen 1100 pixels wide). The corresponding code is available here.\nThe challenges There were several challenges I needed to overcome to create the scrollytelling version:\nIdentify how to adapt the narrative to this specific format Identify a suitable library and understand how to apply it Create D3 data visualizations locally (using promises) Add interactivity to the visuals Publish it online I’m writing this post to help anyone facing similar challenges. I assume that you’re already familiar with some D3, javascript, HTML and CSS.\nIdentify how to adapt the narrative to this specific format Scrollytelling allows the story to be broken down into short stages, with animations used to highlight specific points. Although, it’s not scrollytelling per se, these two aspects have been used in this piece by the Pudding Cool. I love how animations are used to illustrate Ali Wong’s structure of stand up comedy.\nUsing sketches and draft.io, I have identified the main points to emphasize in the narrative. I kept the main structure using 3 illustrated sections: annual precipitations, monthly precipitations, and monthly variations. To make the most of scrollytelling, I broke down the figure in each illustrated section into different annotated versions to:\nHighlight specific figures (e.g. overall increase of 4.9%) Provide a legend (for example, rainfall projected in blue) Highlight specific features of the variation pattern (for example, the months with increase in rain) Highlight the potential impacts of pattern variation (e.g. longer dry spells) Identify a suitable library and understand how to apply it I found An Introduction to Scrollama.js by Russel Samora from the Pudding Cool, which explains “The what, why, and how to use scrollama.js for your next scrollytelling story”. The Sticky Side Example is the closest template to what I had in mind. It was implemented by Erik Driessen in his Scrollytelling with scrollama.js and d3.js (demo). His github repository was of great help, as it also included custom CSS.\nSince both resources explain well how to use Scrollama with D3.js, I focus below on the additions for my project.\nDefine different types of section in HTML I needed 3 different scrollytelling sections separated by text-only sections. Then I created 2 types of section using 2 classes: “scrolly” and “generic”.\nA section element (the parent container) of class “scrolly” contains:\na figure element (the graphic container) containing a div element (the graphic container) whose identifier (in the example below “annual_precipitations”) will be used as a reference when creating the graphic. an article element (scroll text container) containing several div elements with class “step” which contains the text for each of the scrollytelling step. The average annual precipitations observed in the UK from 1991 to 2016 are 1,244\u0026nbsp;mm. According to the worst-case scenario for climate change (\"RCP\u0026nbsp;8.5\"), the projected precipitations in the UK for the period 2080-2099 are 1,304\u0026nbsp;mm. Comparing the results shows that forecast annual precipitations will increase by 61\u0026nbsp;mm, which is a 4.9%\u0026nbsp;increase. NB: I created several classes to highlight specific words in the scrolled text, when the step is active. The formatting is defined in the CSS file.\nAdapt the CSS file To create a consistent layout:\nAdd the references to the additional sections and charts. #scrolly, #scrolly2, #scrolly3 { width: 1100px; margin: 0 auto; position: relative; } #annual_precipitations, #monthly_precipitations, #monthly_variations{ float: right; } Define the aspect of highlighted text when the step is active. .step.is-active span.projected { background: #2783d9; color: white; -webkit-border-radius: 3px; padding: 3px 5px; } Adjust the scrollama settings The scrollama settings are defined in the scrollama-settings.js file. To display different scrollytelling figures I modified the selection of scrolly objects to account for multiple instances using selectAll (instead of select) and the reference to their class “scrolly” (instead of their ID).\n// selecting all objects (sections) of class \"scrolly\" (there are 3 scrolly sections, 1 per figure) var scrolly = main.selectAll(\".scrolly\"); // if you need to only select one element, go with the below line // var scrolly = main.select(\"#scrolly\"); Then, in the init function, the reference to the scrollytelling step is based on the “scrolly” class (.scrolly) of the scrolly container, instead of than its ID (#scrolly). This allows referencing several scrollytelling sections instead of just one.\nscroller .setup({ step: \".scrolly article .step\", offset: 0.5, debug: false }) I also had to review how to flag the active step as the initial code didn’t work in the handleStepEnter function.\n// flag the current step (div) as active response.element.classList.add(\"is-active\"); // used this function as the below one was not working // step.classed(\"is-active\", function(d, i) { // return i === currentIndex; // }); Then I had to add a handleStepExit function to remove the active flag from current step.\nfunction handleStepExit(response) { // response = { element, direction, index } console.log(response); // remove active flag from current step response.element.classList.remove(\"is-active\"); } This function is added in the callback functions listed in the init function using .onStepExit(handleStepExit).\nscroller .setup({ step: \".scrolly article .step\", offset: 0.5, debug: false }) .onStepEnter(handleStepEnter) .onStepExit(handleStepExit);// add the handle step exit (to remove \"is-active\" flag) Create D3 data visualizations locally (using promises) I first created the data visualizations using an Observable notebook. It was convenient to prototype and share them online. They were already coded using the D3 library. All I needed to do was to adapt the code for inclusion in my own website.\nThe only problem? The version 5 of D3 introduced promises a while back and it changed the way we use datasets. And well, I didn’t know how to deal with promises…\n... so this is how I felt at this point! (Credits: GIPHY)\nAfter some research and trial and errors, I finally created a first variable called dataset holding my Promise using D3’s d3.csv function.\n// read in the data const dataset = d3.csv(\"./../data/UK_precipitations.csv\", d3.autoType); I then chain this promise with an anonymous function to create my chart. I also created global scale functions to use them in my different charts.\nconst chartBarMonthly = dataset.then(function(data) { // use scale functions const x = xScale(data); const yMonthly = yScaleMonthly(data); // create a SVG element const svg = d3.select(\"#monthly_precipitations\") // link it to the relevant div .append(\"svg\") .attr(\"width\", totalWidth) .attr(\"height\", h); // create bars // projected precipitations (hidden at first) svg.append(\"g\") .selectAll(\"rect\") .data(data) .join(\"rect\") .attr(\"class\",\"monthlyProjected\") .attr(\"x\", d =\u003e x(d.Month)) .attr(\"y\", d =\u003e yMonthly(0)) .attr(\"height\", 0) // set bar height to 0 to hide .attr(\"width\", x.bandwidth()) .attr(\"stroke\", colorLightBlueAlpha) .attr(\"stroke-width\", 2) .attr(\"fill\", colorLightBlueAlpha) // ... } I could check the result in my browser running a Python web server. After navigating to the right folder, I simply typed python3 -m http.server in my terminal window.\nWell the static charts were re-created locally. Now, it was time to add interactivity.\nAdd interactivity to the visuals Animations I defined the animation functions to apply at each scrollytelling stage using D3’s .transition. This function is pretty magic to me! It allows transitioning between different values of a chart’s features. I used the default setting. I set the duration at 1500 ms using .duration(1500). So you just need to select the right object (using a selection by class here) and call these two functions to create an animation. Pretty amazing!\nI followed Erik Driessen’s advice to test the animations separately (rather than at the same time as all the scrollytelling).\nfunction showProjectedMonthlyPrecipitations() { dataset.then(function(data) { // use scale function const yMonthly = yScaleMonthly(data); d3.selectAll(\".monthlyProjected\") .transition() .duration(1500) .attr(\"y\", d =\u003e yMonthly(d.Projected)) .attr(\"height\", d =\u003e yMonthly(0) - yMonthly(d.Projected)) }) } Once the animation functions are defined, the step when they’re called need to be defined in the handleStepEnter function in the scrollama-settings.js file. This defines how scroll will be handled and what animations will be fired at the different steps. Animation functions were defined to accommodate for scrolling in both up and down directions.\n// scrollama event handlers /* scrollama magic happens here: - based on the index, trigger a certain function from d3 script files - sometimes only fire an event when going down or up in the story */ function handleStepEnter(response) { console.log(response); // response = { element, direction, index } let currentIndex = response.index; let currentDirection = response.direction; // flag the current step (div) as active response.element.classList.add(\"is-active\"); // used this function as the below one was not working // step.classed(\"is-active\", function(d, i) { // return i === currentIndex; // }); // update graphic based on step switch(currentIndex){ case 0: if(currentDirection === 'up'){ hideProjectedAnnualPrecipitations() } else { } break; case 1: if(currentDirection === 'up'){ hideProjectedIncrease(); } else { showProjectedAnnualPrecipitations() } break; case 2: if(currentDirection === 'up'){ } else { showProjectedIncrease(); } break; default: break; } } Tooltips using div I followed Yan Holtz’s great post to create tooltips. I had some trouble reproducing the same result. I managed to solve the issue by using the D3 v7 (instead of D3 v5) and using .attr(\"style\", \"position: absolute; opacity: 0;\") . The absolute position is critical!\n// define tooltip const tooltip = d3.select(\"#monthly_precipitations\") // link it to the relevant div .append(\"div\") .attr(\"id\",\"tootip2\") .attr(\"style\", \"position: absolute; opacity: 0;\") // /!\\ use absolute position (else issue with positioning) .attr(\"class\", \"tooltip\") .style(\"background-color\", lightBlack) .style(\"border-radius\", \"5px\") .style(\"padding\", \"10px\") .style(\"color\", \"white\") Publish it online I created a new github account to use GitHub Pages to host the project online. To be able to push my local repository to the github repository, I re-configured Git Credential Manager using git-credential-manager github login.\nTo streamline my project structure, I follow a structure similar to the one used by Nadieh Bremer in this project. ",
+  "wordCount" : "1682",
+  "inLanguage": "en",
+  "datePublished": "2023-10-20T09:28:00+02:00",
+  "dateModified": "2023-10-20T09:28:00+02:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://linetonthat.com/post/scrollytelling-uk-rainfall/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Line Ton That",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://linetonthat.com/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://linetonthat.com" accesskey="h" title="Line Ton That (Alt + H)">Line Ton That</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://linetonthat.com/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://linetonthat.com/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      My first scrollytelling project
+    </h1>
+    <div class="post-meta"><span title='2023-10-20 09:28:00 +0200 CEST'>October 20, 2023</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h2 id="context">Context<a hidden class="anchor" aria-hidden="true" href="#context">#</a></h2>
+<p>Scrollytelling had been on my wishlist for some time. I love this method as it allows guiding the reader step by step through the narrative, using annotations and animations. I&rsquo;ve also submitted it to this month&rsquo;s <strong><a href="https://community.storytellingwithdata.com/challenges/oct-23-annotate-it/impact-of-climate-change-on-rainfall-in-the-uk-scr">Storytelling with Data Challenge &ldquo;annotate it!&rdquo; </a></strong>. To test out the technique, I chose to reimagine a <strong><a href="https://observablehq.com/@linetonthat/will-climate-change-bring-more-rain-to-the-uk">data visualization</a></strong> that was mostly static. Here is its summary:
+<img loading="lazy" src="/images/23-10_submission_SWD_2020-11.png" alt="Text"  />
+</p>
+<h2 id="the-result">The result<a hidden class="anchor" aria-hidden="true" href="#the-result">#</a></h2>
+<p><img loading="lazy" src="/images/23-10_scrolly_UK_monthly_rain.gif" alt="Text"  />
+
+See the complete scrollytelling version <strong><a href="https://line-ton-that.github.io/UK_precipitations.html">here</a></strong>. NB: This version is best viewed on a desktop computer (or at least on a screen 1100 pixels wide). The corresponding code is available <strong><a href="https://github.com/line-ton-that/line-ton-that.github.io">here</a></strong>.</p>
+<h2 id="the-challenges">The challenges<a hidden class="anchor" aria-hidden="true" href="#the-challenges">#</a></h2>
+<p>There were several challenges I needed to overcome to create the scrollytelling version:</p>
+<ol>
+<li>Identify how to adapt the narrative to this specific format</li>
+<li>Identify a suitable library and understand how to apply it</li>
+<li>Create D3 data visualizations locally (using promises)</li>
+<li>Add interactivity to the visuals</li>
+<li>Publish it online</li>
+</ol>
+<p>I&rsquo;m writing this post to help anyone facing similar challenges. I assume that you&rsquo;re already familiar with some D3, javascript, HTML and CSS.</p>
+<h3 id="identify-how-to-adapt-the-narrative-to-this-specific-format">Identify how to adapt the narrative to this specific format<a hidden class="anchor" aria-hidden="true" href="#identify-how-to-adapt-the-narrative-to-this-specific-format">#</a></h3>
+<p>Scrollytelling allows the story to be broken down into short stages, with animations used to highlight specific points. Although, it&rsquo;s not scrollytelling per se, these two aspects have been used in <strong><a href="https://pudding.cool/2018/02/stand-up/">this piece by the Pudding Cool</a></strong>. I love how animations are used to illustrate Ali Wong&rsquo;s structure of stand up comedy.</p>
+<p>Using sketches and <strong><a href="https://draft.io/p28kcxbspuz9zjrtfqxnyqythxuhnd87n8bj8ymt85d7">draft.io</a></strong>, I have identified the main points to emphasize in the narrative. I kept the main structure using 3 illustrated sections: annual precipitations, monthly precipitations, and monthly variations.
+<img loading="lazy" src="/images/23-10_sketch.jpeg" alt="Text"  />
+
+<img loading="lazy" src="/images/23-10_draft-io.jpg" alt="Text"  />
+</p>
+<p>To make the most of scrollytelling, I broke down the figure in each illustrated section into different annotated versions to:</p>
+<ul>
+<li>Highlight specific figures (e.g. overall increase of 4.9%)
+<img loading="lazy" src="/images/23-10_global_increase.png" alt="Text"  />
+</li>
+<li>Provide a legend (for example, rainfall projected in blue)
+<img loading="lazy" src="/images/23-10_monthly_precipitations.png" alt="Text"  />
+</li>
+<li>Highlight specific features of the variation pattern (for example, the months with increase in rain)
+<img loading="lazy" src="/images/23-10_monthly_additional_water.png" alt="Text"  />
+</li>
+<li>Highlight the potential impacts of pattern variation (e.g. longer dry spells)
+<img loading="lazy" src="/images/23-10_monthly_decreases.png" alt="Text"  />
+</li>
+</ul>
+<h3 id="identify-a-suitable-library-and-understand-how-to-apply-it">Identify a suitable library and understand how to apply it<a hidden class="anchor" aria-hidden="true" href="#identify-a-suitable-library-and-understand-how-to-apply-it">#</a></h3>
+<p>I found <strong><a href="https://pudding.cool/process/introducing-scrollama/">An Introduction to Scrollama.js</a></strong> by Russel Samora from the Pudding Cool, which explains &ldquo;The what, why, and how to use scrollama.js for your next scrollytelling story&rdquo;. The <strong><a href="https://russellsamora.github.io/scrollama/sticky-side/">Sticky Side Example</a></strong> is the closest template to what I had in mind. It was implemented by Erik Driessen in his  <strong><a href="https://edriessen.com/app/scrollytelling-demo/">Scrollytelling with scrollama.js and d3.js (demo)</a></strong>. His <strong><a href="https://github.com/edriessen/scrollytelling-scrollama-d3-demo">github repository</a></strong> was of great help, as it also included custom CSS.</p>
+<p>Since both resources explain well how to use Scrollama with D3.js, I focus below on the additions for my project.</p>
+<h4 id="define-different-types-of-section-in-html">Define different types of section in HTML<a hidden class="anchor" aria-hidden="true" href="#define-different-types-of-section-in-html">#</a></h4>
+<p>I needed 3 different scrollytelling sections separated by text-only sections. Then I created 2 types of section using 2 classes: &ldquo;scrolly&rdquo; and &ldquo;generic&rdquo;.</p>
+<p>A <code>section</code> element (the parent container) of class &ldquo;scrolly&rdquo; contains:</p>
+<ul>
+<li>a <code>figure</code> element (the graphic container) containing a <code>div</code> element (the graphic container) whose identifier (in the example below &ldquo;annual_precipitations&rdquo;) will be used as a reference when creating the graphic.</li>
+<li>an <code>article</code> element (scroll text container) containing several <code>div</code> elements with class &ldquo;step&rdquo; which contains the text for each of the scrollytelling step.</li>
+</ul>
+<pre tabindex="0"><code>&lt;section class=&#34;scrolly&#34; id=&#34;scrolly&#34;&gt;
+
+  &lt;figure&gt;
+    &lt;div id=&#34;annual_precipitations&#34;&gt;&lt;/div&gt;
+  &lt;/figure&gt;
+
+  &lt;article&gt;
+    &lt;div class=&#34;step&#34; data-step=&#34;1&#34;&gt;
+      &lt;p&gt;
+        The average annual precipitations observed in the UK from
+        1991 to 2016 are 1,244&amp;nbsp;mm.
+      &lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;step&#34; data-step=&#34;2&#34;&gt;
+      &lt;p&gt;
+        According to the worst-case scenario for climate change (&#34;RCP&amp;nbsp;8.5&#34;),
+        the &lt;span class=&#34;projected&#34;&gt;projected precipitations&lt;/span&gt; in the UK for the period 2080-2099 are
+        &lt;span class=&#34;projected&#34;&gt;1,304&amp;nbsp;mm&lt;/span&gt;.
+      &lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;step&#34; data-step=&#34;3&#34;&gt;
+      &lt;p&gt;
+        Comparing the results shows that forecast annual precipitations will increase by 61&amp;nbsp;mm,
+        which is a &lt;span class=&#34;rainier&#34;&gt;4.9%&amp;nbsp;increase&lt;/span&gt;.
+      &lt;/p&gt;
+    &lt;/div&gt;
+
+  &lt;/article&gt;
+
+&lt;/section&gt;
+</code></pre><p>NB: I created several classes to highlight specific words in the scrolled text, when the step is active. The formatting is defined in the CSS file.</p>
+<h4 id="adapt-the-css-file">Adapt the CSS file<a hidden class="anchor" aria-hidden="true" href="#adapt-the-css-file">#</a></h4>
+<p>To create a consistent layout:</p>
+<ul>
+<li>Add the references to the additional sections and charts.</li>
+</ul>
+<pre tabindex="0"><code>#scrolly, #scrolly2, #scrolly3 {
+    width: 1100px;
+    margin: 0 auto;
+    position: relative;
+}
+
+#annual_precipitations, #monthly_precipitations, #monthly_variations{
+    float: right;
+}
+</code></pre><ul>
+<li>Define the aspect of highlighted text when the step is active.</li>
+</ul>
+<pre tabindex="0"><code>.step.is-active span.projected {
+  background: #2783d9;
+  color: white;
+  -webkit-border-radius: 3px;
+  padding: 3px 5px;
+}
+</code></pre><h4 id="adjust-the-scrollama-settings">Adjust the scrollama settings<a hidden class="anchor" aria-hidden="true" href="#adjust-the-scrollama-settings">#</a></h4>
+<p>The scrollama settings are defined in the scrollama-settings.js file. To display different scrollytelling figures I modified the selection of  <code>scrolly</code> objects to account for multiple instances using <code>selectAll</code> (instead of <code>select</code>) and the reference to their class &ldquo;scrolly&rdquo; (instead of their ID).</p>
+<pre tabindex="0"><code>// selecting all objects (sections) of class &#34;scrolly&#34; (there are 3 scrolly sections, 1 per figure)
+var scrolly = main.selectAll(&#34;.scrolly&#34;);
+
+// if you need to only select one element, go with the below line
+// var scrolly = main.select(&#34;#scrolly&#34;);
+</code></pre><p>Then, in the <code>init</code> function, the reference to the scrollytelling <code>step</code> is based on the &ldquo;scrolly&rdquo; class (<code>.scrolly</code>) of the scrolly container, instead of than its ID (<code>#scrolly</code>). This allows referencing several scrollytelling sections instead of just one.</p>
+<pre tabindex="0"><code>scroller
+    .setup({
+        step: &#34;.scrolly article .step&#34;,
+        offset: 0.5,
+        debug: false
+    })
+</code></pre><p>I also had to review how to flag the active step as the initial code didn&rsquo;t work in the <code>handleStepEnter</code> function.</p>
+<pre tabindex="0"><code>// flag the current step (div) as active
+response.element.classList.add(&#34;is-active&#34;); // used this function as the below one was not working
+// step.classed(&#34;is-active&#34;, function(d, i) {
+//     return i === currentIndex;
+// });
+</code></pre><p>Then I had to add a <code>handleStepExit</code> function to remove the active flag from current step.</p>
+<pre tabindex="0"><code>function handleStepExit(response) {
+    // response = { element, direction, index }
+    console.log(response);
+    // remove active flag from current step
+    response.element.classList.remove(&#34;is-active&#34;);
+}
+</code></pre><p>This function is added in the callback functions listed in the <code>init</code> function using <code>.onStepExit(handleStepExit)</code>.</p>
+<pre tabindex="0"><code>scroller
+    .setup({
+        step: &#34;.scrolly article .step&#34;,
+        offset: 0.5,
+        debug: false
+    })
+    .onStepEnter(handleStepEnter)
+    .onStepExit(handleStepExit);// add the handle step exit (to remove &#34;is-active&#34; flag)
+</code></pre><h3 id="create-d3-data-visualizations-locally-using-promises">Create D3 data visualizations locally (using promises)<a hidden class="anchor" aria-hidden="true" href="#create-d3-data-visualizations-locally-using-promises">#</a></h3>
+<p>I first created the data visualizations using an <strong><a href="https://observablehq.com/@linetonthat/will-climate-change-bring-more-rain-to-the-uk">Observable notebook</a></strong>. It was convenient to prototype and share them online. They were already coded using the D3 library. All I needed to do was to adapt the code for inclusion in my own website.</p>
+<p>The only problem? <strong><a href="https://datawanderings.com/2018/08/15/d3-js-v5-promise-syntax-examples/">The version 5 of D3 introduced promises</a></strong> a while back and it changed the way we use datasets. And well, I didn&rsquo;t know how to deal with promises&hellip;</p>
+<iframe src="https://giphy.com/embed/1pA5BPDKh6q1oT7oiE" width="480" height="267" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p>... so this is how I felt at this point! <a href="https://giphy.com/gifs/angrybirds-fail-angry-birds-trying-1pA5BPDKh6q1oT7oiE">(Credits: GIPHY)</a></p>
+<p>After some <strong><a href="https://observablehq.com/@observablehq/introduction-to-promises">research</a></strong> and trial and errors, I finally created a first variable called <code>dataset</code> holding my Promise using D3&rsquo;s <code>d3.csv</code> function.</p>
+<pre tabindex="0"><code>// read in the data
+const dataset = d3.csv(&#34;./../data/UK_precipitations.csv&#34;, d3.autoType);
+</code></pre><p>I then chain this promise with an anonymous function to create my chart. I also created global scale functions to use them in my different charts.</p>
+<pre tabindex="0"><code>const chartBarMonthly = dataset.then(function(data) {
+  // use scale functions
+  const x = xScale(data);
+  const yMonthly = yScaleMonthly(data);
+
+  // create a SVG element
+  const svg = d3.select(&#34;#monthly_precipitations&#34;) // link it to the relevant div
+    .append(&#34;svg&#34;)
+    .attr(&#34;width&#34;, totalWidth)
+    .attr(&#34;height&#34;, h);
+
+  // create bars
+  // projected precipitations (hidden at first)
+  svg.append(&#34;g&#34;)
+    .selectAll(&#34;rect&#34;)
+    .data(data)
+    .join(&#34;rect&#34;)
+    .attr(&#34;class&#34;,&#34;monthlyProjected&#34;)
+      .attr(&#34;x&#34;, d =&gt; x(d.Month))
+      .attr(&#34;y&#34;, d =&gt; yMonthly(0))
+      .attr(&#34;height&#34;, 0) // set bar height to 0 to hide
+      .attr(&#34;width&#34;, x.bandwidth())
+      .attr(&#34;stroke&#34;, colorLightBlueAlpha)
+      .attr(&#34;stroke-width&#34;, 2)
+      .attr(&#34;fill&#34;, colorLightBlueAlpha)
+
+    // ...
+
+}
+</code></pre><p>I could check the result in my browser running a Python web server. After navigating to the right folder, I simply typed <code>python3 -m http.server</code> in my terminal window.</p>
+<p>Well the static charts were re-created locally. Now, it was time to add interactivity.</p>
+<h3 id="add-interactivity-to-the-visuals">Add interactivity to the visuals<a hidden class="anchor" aria-hidden="true" href="#add-interactivity-to-the-visuals">#</a></h3>
+<h4 id="animations">Animations<a hidden class="anchor" aria-hidden="true" href="#animations">#</a></h4>
+<p>I defined the animation functions to apply at each scrollytelling stage using D3&rsquo;s <code>.transition</code>. This function is pretty magic to me! It allows transitioning between different values of a chart&rsquo;s features. I used the default setting. I set the duration at 1500 ms using <code>.duration(1500)</code>. So you just need to select the right object (using a selection by class here) and call these two functions to create an animation. Pretty amazing!</p>
+<p>I followed Erik Driessen&rsquo;s advice to test the animations separately (rather than at the same time as all the scrollytelling).</p>
+<pre tabindex="0"><code>function showProjectedMonthlyPrecipitations() {
+
+	dataset.then(function(data) {
+
+			// use scale function
+			const yMonthly = yScaleMonthly(data);
+
+			d3.selectAll(&#34;.monthlyProjected&#34;)
+				.transition()
+				.duration(1500)
+				.attr(&#34;y&#34;, d =&gt; yMonthly(d.Projected))
+				.attr(&#34;height&#34;, d =&gt; yMonthly(0) - yMonthly(d.Projected))
+		})
+}
+</code></pre><p>Once the animation functions are defined, the step when they&rsquo;re called need to be defined in the <code>handleStepEnter</code> function in the scrollama-settings.js file. This defines how scroll will be handled and what animations will be fired at the different steps. Animation functions were defined to accommodate for scrolling in both up and down directions.</p>
+<pre tabindex="0"><code>// scrollama event handlers
+
+/*
+scrollama magic happens here:
+- based on the index, trigger a certain function from d3 script files
+- sometimes only fire an event when going down or up in the story
+*/
+function handleStepEnter(response) {
+
+    console.log(response);
+    // response = { element, direction, index }
+    let currentIndex = response.index;
+    let currentDirection = response.direction;
+
+    // flag the current step (div) as active
+    response.element.classList.add(&#34;is-active&#34;); // used this function as the below one was not working
+    // step.classed(&#34;is-active&#34;, function(d, i) {
+    //     return i === currentIndex;
+    // });
+
+    // update graphic based on step
+    switch(currentIndex){
+        case 0:
+            if(currentDirection === &#39;up&#39;){
+                hideProjectedAnnualPrecipitations()
+            } else {
+
+            }
+            break;
+        case 1:
+            if(currentDirection === &#39;up&#39;){
+                hideProjectedIncrease();
+            } else {
+                showProjectedAnnualPrecipitations()
+            }
+            break;
+        case 2:
+            if(currentDirection === &#39;up&#39;){
+
+            } else {
+                showProjectedIncrease();
+            }
+            break;
+
+
+        default:
+            break;
+    }
+
+}
+</code></pre><h4 id="tooltips-using-div">Tooltips using <code>div</code><a hidden class="anchor" aria-hidden="true" href="#tooltips-using-div">#</a></h4>
+<p>I followed <strong><a href="https://d3-graph-gallery.com/graph/bubble_tooltip.html">Yan Holtz&rsquo;s great post</a></strong> to create tooltips. I had some trouble reproducing the same result. I managed to solve the issue by using the D3 v7 (instead of D3 v5) and using <code>.attr(&quot;style&quot;, &quot;position: absolute; opacity: 0;&quot;) </code>. The absolute position is critical!</p>
+<pre tabindex="0"><code>
+// define tooltip
+const tooltip = d3.select(&#34;#monthly_precipitations&#34;) // link it to the relevant div
+      .append(&#34;div&#34;)
+        .attr(&#34;id&#34;,&#34;tootip2&#34;)
+        .attr(&#34;style&#34;, &#34;position: absolute; opacity: 0;&#34;) // /!\ use absolute position (else issue with positioning)
+        .attr(&#34;class&#34;, &#34;tooltip&#34;)
+        .style(&#34;background-color&#34;, lightBlack)
+        .style(&#34;border-radius&#34;, &#34;5px&#34;)
+        .style(&#34;padding&#34;, &#34;10px&#34;)
+        .style(&#34;color&#34;, &#34;white&#34;)
+</code></pre><h3 id="publish-it-online">Publish it online<a hidden class="anchor" aria-hidden="true" href="#publish-it-online">#</a></h3>
+<p>I created a new github account to use <strong><a href="https://pages.github.com/">GitHub Pages</a></strong> to host the project online. To be able to push my local repository to the <strong><a href="https://github.com/line-ton-that/line-ton-that.github.io">github repository</a></strong>, I re-configured Git Credential Manager using <code>git-credential-manager github login</code>.</p>
+<p>To streamline my project structure, I follow a structure similar to the one used by Nadieh Bremer in <strong><a href="https://sciencenews.blob.core.windows.net/sninteractives/gravwaves/index.html">this project</a></strong>.
+<img loading="lazy" src="/images/23-10_folder_structure.png" alt="Text"  />
+</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://linetonthat.com/tags/d3/">D3</a></li>
+      <li><a href="https://linetonthat.com/tags/scrollama/">scrollama</a></li>
+      <li><a href="https://linetonthat.com/tags/dataviz/">dataviz</a></li>
+      <li><a href="https://linetonthat.com/tags/scrollytelling/">scrollytelling</a></li>
+      <li><a href="https://linetonthat.com/tags/javascript/">javascript</a></li>
+      <li><a href="https://linetonthat.com/tags/bar-chart/">bar chart</a></li>
+      <li><a href="https://linetonthat.com/tags/climate-change/">climate change</a></li>
+      <li><a href="https://linetonthat.com/tags/uk/">UK</a></li>
+      <li><a href="https://linetonthat.com/tags/rainfall/">rainfall</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://linetonthat.com">Line Ton That</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -27,19 +27,19 @@ I'm writing this post to help anyone facing similar challenges. I assume that yo
 Scrollytelling allows the story to be broken down into short stages, with animations used to highlight specific points. Although, it's not scrollytelling per se, these two aspects have been used in __[this piece by the Pudding Cool](https://pudding.cool/2018/02/stand-up/)__. I love how animations are used to illustrate Ali Wong's structure of stand up comedy.
 
 Using sketches and __[draft.io](https://draft.io/p28kcxbspuz9zjrtfqxnyqythxuhnd87n8bj8ymt85d7)__, I have identified the main points to emphasize in the narrative. I kept the main structure using 3 illustrated sections: annual precipitations, monthly precipitations, and monthly variations.
-![Text](/images/23-10_sketch.jpeg)
-![Text](/images/23-10_draft-io.jpg)
+![sketch](/images/23-10_sketch.jpeg)
+![draft-io](/images/23-10_draft-io.jpg)
 
 
 To make the most of scrollytelling, I broke down the figure in each illustrated section into different annotated versions to:
 * Highlight specific figures (e.g. overall increase of 4.9%)
-![Text](/images/23-10_global_increase.png)
+![overall increase](/images/23-10_overall_increase.png)
 * Provide a legend (for example, rainfall projected in blue)
-![Text](/images/23-10_monthly_precipitations.png)
+![monthly precipitations](/images/23-10_monthly_precipitations.png)
 * Highlight specific features of the variation pattern (for example, the months with increase in rain)
-![Text](/images/23-10_monthly_additional_water.png)
+![monthly additional water](/images/23-10_monthly_additional_water.png)
 * Highlight the potential impacts of pattern variation (e.g. longer dry spells)
-![Text](/images/23-10_monthly_decreases.png)
+![monthly decreases](/images/23-10_monthly_decreases.png)
 
 ### Identify a suitable library and understand how to apply it
 I found __[An Introduction to Scrollama.js](https://pudding.cool/process/introducing-scrollama/)__ by Russel Samora from the Pudding Cool, which explains "The what, why, and how to use scrollama.js for your next scrollytelling story". The __[Sticky Side Example](https://russellsamora.github.io/scrollama/sticky-side/)__ is the closest template to what I had in mind. It was implemented by Erik Driessen in his  __[Scrollytelling with scrollama.js and d3.js (demo)](https://edriessen.com/app/scrollytelling-demo/)__. His __[github repository](https://github.com/edriessen/scrollytelling-scrollama-d3-demo)__ was of great help, as it also included custom CSS.
